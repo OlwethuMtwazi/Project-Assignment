@@ -1,0 +1,39 @@
+
+INSERT INTO users (user_id, email, password, firstname, lastname, phonenumber, role, created_at)
+VALUES
+(1, 'alice@mycput.ac.za', 'pass123', 'Alice', 'Mokoena', '0821234567', 'Student', '2025-07-01 09:00:00'),
+(2, 'dlaminibob@mycput.ac.za', 'secure456', 'Bob', 'Dlamini', '0739876543', 'Staff', '2025-07-03 14:30:00'),
+(3, 'drndlovu@gmail.com', 'qwerty789', 'Carol', 'Ndlovu', '0845551234', 'Counsellor', '2025-07-05 11:15:00');
+
+
+INSERT INTO counsellors (counsellor_id, name, availability)
+VALUES
+(101, 'Dr. Thandi Zulu', 'Mon-Fri 09:00–17:00'),
+(102, 'Mr. Sipho Maseko', 'Tue-Thu 10:00–16:00');
+
+INSERT INTO sessions (session_id, user_id, counsellor_id, date, time, status, session_type, meeting_type)
+VALUES
+(1001, 1, 101, '2025-08-01', '10:00:00', 'completed', 'therapy', 'virtual'),
+(1002, 2, 102, '2025-08-02', '14:00:00', 'rescheduled', 'consultation', 'in-person'),
+(1003, 1, 102, '2025-08-05', '09:30:00', 'cancelled', 'therapy', 'virtual');
+
+*ENUM allows only allows 'Counselling'/'Therapy' and 'Face2Face'/'Virtual'.
+INSERT INTO sessions (user_id, counsellor_id, date, time, status, session_type, meeting_type)
+VALUES
+(1, 101, '2025-08-01', '10:00:00', 'Completed', 'Therapy', 'Virtual'),
+(2, 102, '2025-08-02', '14:00:00', 'Rescheduled', 'Counselling', 'Face2Face'),
+(1, 102, '2025-08-05', '09:30:00', 'Cancelled', 'Therapy', 'Virtual');
+
+
+
+INSERT INTO session_notes (note_id, session_id, notes)
+VALUES
+(501, 1001, 'Discussed anxiety triggers and coping tools'),
+(502, 1003, 'Session cancelled by client');
+
+
+INSERT INTO feedback (feedback_id, user_id, session_id, rating, comments)
+VALUES
+(301, 1, 1001, 5, 'Very helpful and empathetic'),
+(302, 2, 1002, 4, 'Good advice, looking forward to it');
+
